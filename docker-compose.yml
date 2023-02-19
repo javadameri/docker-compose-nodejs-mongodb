@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   mongodb:
-    image: mongo:5.0.2
+    image: mongo:4.4.6
     restart: unless-stopped
     env_file: ./.env
     environment:
@@ -28,6 +28,9 @@ services:
       - DB_PORT=$MONGODB_DOCKER_PORT
     stdin_open: true
     tty: true
+    volumes:
+      - ./bezkoder-app:/bezkoder-app
+      - /bezkoder-app/node_modules
 
 volumes:
   db:
